@@ -82,9 +82,26 @@ TV = 0.0001;        % total variation regularization parameter
 beta = 0;      % non-negativity constraint value
 niter = 100;   % RLD iteration times
 
-DeconImgR = RLDTV(ImgR, PSFR, niter, beta, TV);
-DeconImgG = RLDTV(ImgG, PSFG, niter, beta, TV);
-DeconImgB = RLDTV(ImgB, PSFB, niter, beta, TV);
+
+channels = {'R','G','B'};
+tic;
+for k = 1:3
+    switch k
+        case 1
+            fprintf('Processing channel R (1/3)...\n');
+            DeconImgR = RLDTV(ImgR, PSFR, niter, beta, TV, true, 'R');
+        case 2
+            fprintf('Processing channel G (2/3)...\n');
+            DeconImgG = RLDTV(ImgG, PSFG, niter, beta, TV, true, 'G');
+        case 3
+            fprintf('Processing channel B (3/3)...\n');
+            DeconImgB = RLDTV(ImgB, PSFB, niter, beta, TV, true, 'B');
+    end
+    fprintf('Channel %s done. Total elapsed: %.1f s\n\n', channels{k}, toc);
+end
+fprintf('All channels finished.\n');
+
+
 
 
 
