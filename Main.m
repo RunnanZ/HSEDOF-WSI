@@ -16,7 +16,7 @@ requestGPU = true;        % false: force CPU execution.
 batchRGBOnGPU = true;     % true: process RGB channels as one GPU batch.
 gpuPrecision = 'single';  % 'single' is faster; use 'double' for precision tests.
 
-rawFile = "Raw_LBC.tif";  % "Raw_IFS.tif" or "Raw_LBC.tif".
+rawFile = "Raw_IFS.tif";  % "Raw_IFS.tif" or "Raw_LBC.tif".
 forceRecomputePSF = false;
 cropBorder = 50;
 thresholdRate = 0.98;
